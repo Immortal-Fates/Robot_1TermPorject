@@ -1,0 +1,203 @@
+\documentclass[12pt]{article}
+\usepackage[]{ulem}
+\usepackage[heading=true]{ctex}%支持中文
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}%简单拆分单元格
+\usepackage{multirow}%纵向合并单元格
+\usepackage{amsmath}%math
+\usepackage{amssymb,mathrsfs}%math style of latters
+\usepackage{esint}
+\usepackage{figbib}
+\begin{document}
+\[
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        关节 & $\alpha_{i-1}(rad)$ & $a_{i-1}(m)$ & $d_{i}(m)$ & $\theta_{i}(rad)$              \\
+        \hline
+        \hline
+        1    & 0                   & 0            & 0.230      & $\theta_1$                     \\
+        \hline
+        2    & $-\frac{\pi}{2}$    & 0            & -0.054     & $\theta _2$ ($-\frac{\pi}{2}$) \\
+        \hline
+        3    & 0                   & 0.185        & 0          & $\theta_3$                     \\
+        \hline
+        4    & 0                   & 0.17        & 0.077      & $\theta_4$ ($\frac{\pi}{2}$)   \\
+        \hline
+        5    & $\frac{\pi}{2}$     & 0            & 0.077      & $\theta_5$ ($\frac{\pi}{2}$)   \\
+        \hline
+        6    & $\frac{\pi}{2}$     & 0            & 0.0855     & $\theta_6$                     \\
+        \hline
+    \end{tabular}
+\]
+\[
+    ^{i-1}_iT=
+    \left[\begin{array}{cccc}\cos\theta_i           & -\sin\theta_i                & 0                & 
+        a_{i-1} \\\sin\theta_i\cos\alpha_{i-1}&\cos\theta_i\cos\alpha_{i-1}&-\sin\alpha_{i-1}&-\sin\alpha_{i-1}d_i\\
+             \sin\theta_i\sin\alpha_{i-1} & \cos\theta_i\sin\alpha_{i-1} & \cos\alpha_{i-1} &
+             \cos\alpha_{i-1}d_i                                                                      
+             \\0&0&0&1\end{array}\right]
+\]
+
+\[
+    ^0_1T=
+    \left[
+        \begin{matrix}
+            c\theta_1 & -s\theta_1 & 0 & 0    \\
+            s\theta_1 & c\theta_1  & 0 & 0    \\
+            0         & 0          & 1 & 0.23 \\
+            0         & 0          & 0 & 1
+        \end{matrix}  \right] \nonscript
+    ^1_2T=
+    \left[
+        \begin{matrix}
+            c\theta_2  & -s\theta_2 & 0 & 0      \\
+            0          & 0          & 1 & -0.054 \\
+            -s\theta_2 & -c\theta_2 & 0 & 0      \\
+            0          & 0          & 0 & 1
+        \end{matrix}  \right]
+\]
+\[
+    ^2_3T=
+    \left[
+        \begin{matrix}
+            c\theta_3 & -s\theta_3 & 0 & 0.185 \\
+            s\theta_3 & c\theta_3  & 0 & 0     \\
+            0         & 0          & 1 & 0     \\
+            0         & 0          & 0 & 1
+        \end{matrix}  \right] \nonscript
+    ^3_4T=
+    \left[
+        \begin{matrix}
+            c\theta_4 & -s\theta_4 & 0 & 0.17 \\
+            s\theta_4 & c\theta_4  & 0 & 0     \\
+            0         & 0          & 1 & 0.077 \\
+            0         & 0          & 0 & 1
+        \end{matrix}  \right]
+\]\[
+    ^4_5T=
+    \left[
+        \begin{matrix}
+            c\theta_5 & -s\theta_5 & 0 & 0      \\
+            0         & 0          & -1 & -0.077 \\
+            s\theta_5 & c\theta_5  & 0 & 0      \\
+            0         & 0          & 0 & 1
+        \end{matrix}  \right] \nonscript
+    ^5_6T=
+    \left[
+        \begin{matrix}
+            c\theta_6 & -s\theta_6 & 0  & 0       \\
+            0         & 0          & -1 & -0.0855 \\
+            s\theta_6 & c\theta_6  & 0  & 0       \\
+            0         & 0          & 0  & 1
+        \end{matrix}  \right] \nonscript
+\]
+\[
+    ^0_6T= \left[
+        \begin{matrix}
+            r_{11} & r_{12} & r_{13} & p_x \\
+            r_{21} & r_{22} & r_{23} & p_y \\
+            r_{31} & r_{32} & r_{33} & p_z \\
+            0      & 0      & 0      & 1
+        \end{matrix}  \right]
+\]
+\[
+    \begin{aligned}
+        r_{11}=&s234c1s6 - c6(s1s5 - c234c1c5)\\
+        r_{12}=&s6(s1s5 - c234c1c5) + s234c1c6\\
+        r_{13}=& c5s1 + c234c1s5\\ 
+        r_{21}=&c6(c1s5 + c234c5s1) + s234s1s6\\
+        r_{22}=&s234c6s1 - s6(c1s5 + c234c5s1)\\
+        r_{23}=&c234s1s5 - c1c5\\
+        r_{31}=&c234s6 - s234c5c6\\
+        r_{32}=&c234c6 + s234c5s6\\
+        r_{33}=&-s234s5\\
+        p_x=&0.185c1c2 - 0.023s1 + (0.171c5s1)/2 - 0.17c1s2s3  \\
+        &+(0.0171c234c1s5)/2 + 0.077c23c1s4 + 0.077s23c1c4 + 0.17c1c2c3\\
+        p_y=&0.023c1 - (0.171c1c5)/2 + 0.185c2s1 - 0.17s1s2s3  \\
+        &+(0.171c234s1s5)/2 + 0.077c23s1s4 + 0.077s23c4s1 + 0.17c2c3s1\\
+        p_z=&0.077c23c4 - 0.185s2 - 0.077s23s4 - s5((0.171c23s4)/2  \\
+        &+(0.171s23c4)/2) - 0.17s23 + 0.23
+    \end{aligned}
+\]
+机器人逆运动学部分：
+
+\[
+    ^2_6T= \left[
+        \begin{matrix}
+            r_{11}' & r_{12}' & r_{13}' & p_x' \\
+            r_{21}' & r_{22}' & r_{23}' & p_y' \\
+            r_{31}' & r_{32}' & r_{33}' & p_z' \\
+            0      & 0      & 0      & 1
+        \end{matrix}  \right]
+\]
+\[
+    \begin{aligned}
+        r_{11}'=&s34s6+c34c5c6\\
+        r_{12}'=&s34c6-c34c5s6\\
+        r_{13}'=&c34s5\\ 
+        r_{21}'=&s34c5c6-c34s6\\
+        r_{22}'=&-c34c6-s34c5s6\\
+        r_{23}'=&s34s5\\
+        r_{31}'=&c6s5\\
+        r_{32}'=&-s5s6\\
+        r_{33}'=&-c5\\
+        p_x'=&77s34+170c3+171c34s5/2+185\\
+        p_y'=&170s3-77c34+171s34s5/2\\
+        p_z'=&77-171c5/2
+    \end{aligned}
+\]  
+又有
+\[
+    ^2_6T= ^1_2T^{-1}\quad ^0_1T^{-1}\quad ^0_6T= \left[
+        \begin{matrix}
+            r_{11}' & r_{12}' & r_{13}' & p_x' \\
+            r_{21}' & r_{22}' & r_{23}' & p_y' \\
+            r_{31}' & r_{32}' & r_{33}' & p_z' \\
+            0      & 0      & 0      & 1
+        \end{matrix}  \right]
+\]
+\[
+    \begin{aligned}
+        r_{11}'=&r_{11}c1c2-r_{31}s2+r_{21}c2s1\\
+        r_{12}'=&r_{12}c1c2-r_{32}s2+r_{22}c2s1\\
+        r_{13}'=&r_{13}c1c2-r_{33}s2+r_{23}c2s1\\ 
+        r_{21}'=&-r_{31}c2-r_{11}c1s2-r_{21}s1s2\\
+        r_{22}'=&-r_{32}c2-r_{12}c1s2-r_{22}s1s2\\
+        r_{23}'=&-r_{33}c2-r_{13}c1s2-r_{23}s1s2\\
+        r_{31}'=&r_{21}c1-r_{11}s1\\
+        r_{32}'=&r_{22}c1-r_{12}s1\\
+        r_{33}'=&r_{23}c1-r_{13}s1\\
+        p_x'=&230s2-p_zs2+p_xc1c2+p_yc2s1\\
+        p_y'=&230c2-p_zc2-p_xc1s2-p_ys1s2\\
+        p_z'=&p_yc1-p_xs1+54
+    \end{aligned}
+\]  
+\[
+    p_z'-\frac{171}{2}r_{33}'=77=(p_y-\frac{171}{2}r_{23})c1-(p_x-\frac{171}{2}r_{13})s1+54
+\]
+\[
+    (p_y-\frac{171}{2}r_{23})c1-(p_x-\frac{171}{2}r_{13})s1=23
+\]
+\[
+    a\cos \theta +b\sin \theta =c   
+\]
+\[
+    \theta= 2\arctan\left(\frac{b\pm \sqrt{b^2+a^2-c^2}}{a+c}\right)   
+\]
+\[
+    \theta_5=\pm \arccos (r_{33}') \quad \theta_6=\arctan \left(\frac{-r_{32}'}{r_{31}'}\right)(+\pi)
+\]
+\[
+    ^1_4T=  ^0_1T^{-1}\ ^0_6T\ ^5_6T^{-1}\ ^4_5T^{-1}=\nonscript^1_2T^2_3T^3_4T
+\]
+\[
+    ^1_4T= \left[
+        \begin{matrix}
+            c234 & -s234 & 0 & 0.17c23+0.185c2 \\
+            0 & 0 & 1& 0.023\\
+            -s234 & -c234 &0 &-0.17s23-0.185s2 \\
+            0      & 0      & 0      & 1
+        \end{matrix}  \right]
+\]
+\end{document}

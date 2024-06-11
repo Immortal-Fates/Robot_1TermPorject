@@ -1,0 +1,32 @@
+elif(t<=path_cube21.end_time):
+        print(t)
+        q =path_cube21.angle_in_path(path_cube21.start_time,t,q) /180.0 *pi
+        print(q)
+        state=False
+    elif(t<=path_cube22.end_time):
+        print(t)
+        q =path_cube22.angle_in_path(path_cube22.start_time,t,q) /180.0 *pi
+        print(q)
+        state=True
+    elif(t<=path_cube23.end_time):
+        print(t)
+        q =path_cube23.angle_in_path(path_cube23.start_time,t,q) /180.0 *pi
+        print(q)
+        state=True
+    elif(t<=path_cube24.end_time):
+        print(t)
+        q =path_cube24.angle_in_path(path_cube24.start_time,t,q) /180.0 *pi
+        print(q)
+        state=True
+    elif(t<=path_cube25.end_time):
+        print("place")
+        print(t)
+        q =path_cube25.angle_in_path(path_cube25.start_time,t,q) /180.0 *pi
+        print(q)
+        state=True
+    elif(t<=path_cube26.end_time):
+        print("return")
+        print(t)
+        q =path_cube26.angle_in_path(path_cube26.start_time,t,q) /180.0 *pi
+        print(q)
+        state=False
